@@ -5,13 +5,13 @@
 </p>
 
 <p align="center">
-<img src="https://img.shields.io/github/v/release/epitonium/SVProgressHUD?color=9BD600&label=Release">
+<img src="https://img.shields.io/github/v/tag/epitonium/SVProgressHUD?color=9BD600&label=Release">
 <a href="https://swift.org/package-manager/"><img src="https://img.shields.io/badge/SPM-supported-f48041.svg?style=flat"></a>
 <img src="https://img.shields.io/cocoapods/l/Kingfisher.svg?style=flat">
 <img src="https://img.shields.io/badge/platform-iOS%20|%20tvOS-4BC51D.svg?style=flat">
 </p>
 
-`SVProgressHUD` is a clean and easy-to-use HUD meant to display the progress of an ongoing task on iOS and tvOS. Refactored SPM version of the [SVProgressHUD](https://github.com/SVProgressHUD/SVProgressHUD).
+Swift Package 📦 `SVProgressHUD` is a clean and easy-to-use HUD meant to display the progress of an ongoing task on iOS and tvOS. Refactored SPM version of the [SVProgressHUD](https://github.com/SVProgressHUD/SVProgressHUD).
 
 ## Demo        
 
