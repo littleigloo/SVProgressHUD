@@ -71,8 +71,9 @@ typedef void (^SVProgressHUDDismissCompletion)(void);
 
 @property (assign, nonatomic) UIWindowLevel maxSupportedWindowLevel; // default is UIWindowLevelNormal
 
-@property (assign, nonatomic) BOOL hapticsEnabled;      // default is NO
-@property (assign, nonatomic) BOOL motionEffectEnabled; // default is YES
+@property (assign, nonatomic) BOOL isFlawlessStackingEnabled;   // default is NO
+@property (assign, nonatomic) BOOL hapticsEnabled;              // default is NO
+@property (assign, nonatomic) BOOL motionEffectEnabled;         // default is YES
 
 + (void)setDefaultStyle:(SVProgressHUDStyle)style;                      // default is SVProgressHUDStyleLight
 + (void)setDefaultMaskType:(SVProgressHUDMaskType)maskType;             // default is SVProgressHUDMaskTypeNone
@@ -100,6 +101,7 @@ typedef void (^SVProgressHUDDismissCompletion)(void);
 + (void)setFadeInAnimationDuration:(NSTimeInterval)duration;            // default is 0.15 seconds
 + (void)setFadeOutAnimationDuration:(NSTimeInterval)duration;           // default is 0.15 seconds
 + (void)setMaxSupportedWindowLevel:(UIWindowLevel)windowLevel;          // default is UIWindowLevelNormal
++ (void)setFlawlessStackingEnabled:(BOOL)isFlawlessStackingEnabled;     // default is NO
 + (void)setHapticsEnabled:(BOOL)hapticsEnabled;						    // default is NO
 + (void)setMotionEffectEnabled:(BOOL)motionEffectEnabled;               // default is YES
 

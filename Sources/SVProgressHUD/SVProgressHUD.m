@@ -191,6 +191,10 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
     [self sharedView].maxSupportedWindowLevel = windowLevel;
 }
 
++ (void)setFlawlessStackingEnabled:(BOOL)isFlawlessStackingEnabled {
+    [self sharedView].isFlawlessStackingEnabled = isFlawlessStackingEnabled;
+}
+
 + (void)setHapticsEnabled:(BOOL)hapticsEnabled {
     [self sharedView].hapticsEnabled = hapticsEnabled;
 }
@@ -345,6 +349,7 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
         
         _maxSupportedWindowLevel = UIWindowLevelNormal;
         
+        _isFlawlessStackingEnabled = NO;
         _hapticsEnabled = NO;
         _motionEffectEnabled = YES;
         
@@ -672,6 +677,13 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         __strong SVProgressHUD *strongSelf = weakSelf;
         if(strongSelf){
+            
+            // If Flawless Stacking is enabled then don't create a new view and just continue showing the old one.
+            if(strongSelf.isFlawlessStackingEnabled == YES && strongSelf.activityCount > 0)  {
+                strongSelf.activityCount++;
+                return;
+            }
+            
             if(strongSelf.fadeOutTimer) {
                 strongSelf.activityCount = 0;
             }
