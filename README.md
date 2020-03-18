@@ -12,11 +12,7 @@
 <img src="https://img.shields.io/badge/license-MIT-3a3a3a">
 </p>
 
-Swift Package 📦 `SVProgressHUD` is a clean and easy-to-use HUD meant to display the progress of an ongoing task on iOS and tvOS. Refactored SPM version of the [SVProgressHUD](https://github.com/SVProgressHUD/SVProgressHUD).
-
-## Demo        
-
-Try `SVProgressHUD` on [Appetize.io](https://appetize.io/app/p8r2cvy8kq74x7q7tjqf5gyatr).
+Swift Package 📦 `SVProgressHUD` is a clean and easy-to-use HUD meant to display the progress of an ongoing task on iOS and tvOS. Refactored `Swift Package Manager` version of the [SVProgressHUD](https://github.com/SVProgressHUD/SVProgressHUD).
 
 ## Installation
 
@@ -73,40 +69,48 @@ If you'd like to stack HUDs, you can balance out every show call using:
 
 The HUD will get dismissed once the popActivity calls will match the number of show calls.
 
+### Flawless stacking
+
+If you'd like to stack the same HUD on top of the previous one, as in case of serial requests to the remote presenting new HUD at the start of each one, stacking will produce a blinking effect. To achieve a flawless stacking without the HUD interface blinking use:
+
+```
++ (void)setFlawlessStackingEnabled:(BOOL)isFlawlessStackingEnabled;
+```
+
 ## Customization
 
 `SVProgressHUD` can be customized via the following methods:
 
 ```objective-c
-+ (void)setDefaultStyle:(SVProgressHUDStyle)style;                  // default is SVProgressHUDStyleLight
-+ (void)setDefaultMaskType:(SVProgressHUDMaskType)maskType;         // default is SVProgressHUDMaskTypeNone
-+ (void)setDefaultAnimationType:(SVProgressHUDAnimationType)type;   // default is SVProgressHUDAnimationTypeFlat
-+ (void)setContainerView:(UIView*)containerView;                    // default is window level
-+ (void)setMinimumSize:(CGSize)minimumSize;                         // default is CGSizeZero, can be used to avoid resizing
-+ (void)setRingThickness:(CGFloat)width;                            // default is 2 pt
-+ (void)setRingRadius:(CGFloat)radius;                              // default is 18 pt
-+ (void)setRingNoTextRadius:(CGFloat)radius;                        // default is 24 pt
-+ (void)setCornerRadius:(CGFloat)cornerRadius;                      // default is 14 pt
-+ (void)setBorderColor:(nonnull UIColor*)color;                     // default is nil
-+ (void)setBorderWidth:(CGFloat)width;                              // default is 0
-+ (void)setFont:(UIFont*)font;                                      // default is [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]
-+ (void)setForegroundColor:(UIColor*)color;                         // default is [UIColor blackColor], only used for SVProgressHUDStyleCustom
-+ (void)setForegroundImageColor:(nullable UIColor*)color;           // default is the same as foregroundColor
-+ (void)setBackgroundColor:(UIColor*)color;                         // default is [UIColor whiteColor], only used for SVProgressHUDStyleCustom
-+ (void)setBackgroundLayerColor:(UIColor*)color;                    // default is [UIColor colorWithWhite:0 alpha:0.4], only used for SVProgressHUDMaskTypeCustom
-+ (void)setImageViewSize:(CGSize)size;                              // default is 28x28 pt
-+ (void)setShouldTintImages:(BOOL)shouldTintImages;                 // default is YES
-+ (void)setInfoImage:(UIImage*)image;                               // default is the bundled info image provided by Freepik
-+ (void)setSuccessImage:(UIImage*)image;                            // default is bundled success image from Freepik
-+ (void)setErrorImage:(UIImage*)image;                              // default is bundled error image from Freepik
-+ (void)setViewForExtension:(UIView*)view;                          // default is nil, only used if #define SV_APP_EXTENSIONS is set
-+ (void)setGraceTimeInterval:(NSTimeInterval)interval;              // default is 0 seconds
-+ (void)setMinimumDismissTimeInterval:(NSTimeInterval)interval;     // default is 5.0 seconds
-+ (void)setMaximumDismissTimeInterval:(NSTimeInterval)interval;     // default is CGFLOAT_MAX
-+ (void)setFadeInAnimationDuration:(NSTimeInterval)duration;        // default is 0.15 seconds
-+ (void)setFadeOutAnimationDuration:(NSTimeInterval)duration;       // default is 0.15 seconds
-+ (void)setMaxSupportedWindowLevel:(UIWindowLevel)windowLevel;      // default is UIWindowLevelNormal
-+ (void)setHapticsEnabled:(BOOL)hapticsEnabled;                     // default is NO
++ (void)setDefaultStyle:(SVProgressHUDStyle)style;                      // default is SVProgressHUDStyleLight
++ (void)setDefaultMaskType:(SVProgressHUDMaskType)maskType;             // default is SVProgressHUDMaskTypeNone
++ (void)setDefaultAnimationType:(SVProgressHUDAnimationType)type;       // default is SVProgressHUDAnimationTypeFlat
++ (void)setContainerView:(UIView*)containerView;                        // default is window level
++ (void)setMinimumSize:(CGSize)minimumSize;                             // default is CGSizeZero, can be used to avoid resizing
++ (void)setRingThickness:(CGFloat)width;                                // default is 2 pt
++ (void)setRingRadius:(CGFloat)radius;                                  // default is 18 pt
++ (void)setRingNoTextRadius:(CGFloat)radius;                            // default is 24 pt
++ (void)setCornerRadius:(CGFloat)cornerRadius;                          // default is 14 pt
++ (void)setBorderColor:(nonnull UIColor*)color;                         // default is nil
++ (void)setBorderWidth:(CGFloat)width;                                  // default is 0
++ (void)setFont:(UIFont*)font;                                          // default is [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]
++ (void)setForegroundColor:(UIColor*)color;                             // default is [UIColor blackColor], only used for SVProgressHUDStyleCustom
++ (void)setForegroundImageColor:(nullable UIColor*)color;               // default is the same as foregroundColor
++ (void)setBackgroundColor:(UIColor*)color;                             // default is [UIColor whiteColor], only used for SVProgressHUDStyleCustom
++ (void)setHudViewCustomBlurEffect:(nullable UIBlurEffect*)blurEffect;  // default is nil, only used for SVProgressHUDStyleCustom, can be combined with backgroundColor
++ (void)setBackgroundLayerColor:(UIColor*)color;                        // default is [UIColor colorWithWhite:0 alpha:0.4], only used for SVProgressHUDMaskTypeCustom
++ (void)setImageViewSize:(CGSize)size;                                  // default is 28x28 pt
++ (void)setShouldTintImages:(BOOL)shouldTintImages;                     // default is YES
++ (void)setViewForExtension:(UIView*)view;                              // default is nil, only used if #define SV_APP_EXTENSIONS is set
++ (void)setGraceTimeInterval:(NSTimeInterval)interval;                  // default is 0 seconds
++ (void)setMinimumDismissTimeInterval:(NSTimeInterval)interval;         // default is 5.0 seconds
++ (void)setMaximumDismissTimeInterval:(NSTimeInterval)interval;         // default is infinite
++ (void)setFadeInAnimationDuration:(NSTimeInterval)duration;            // default is 0.15 seconds
++ (void)setFadeOutAnimationDuration:(NSTimeInterval)duration;           // default is 0.15 seconds
++ (void)setMaxSupportedWindowLevel:(UIWindowLevel)windowLevel;          // default is UIWindowLevelNormal
++ (void)setFlawlessStackingEnabled:(BOOL)isFlawlessStackingEnabled;     // default is NO
++ (void)setHapticsEnabled:(BOOL)hapticsEnabled;                         // default is NO
++ (void)setMotionEffectEnabled:(BOOL)motionEffectEnabled;               // default is YES
 ```
 
 Additionally `SVProgressHUD` supports the `UIAppearance` protocol for most of the above methods.
@@ -154,4 +158,4 @@ When using `SVProgressHUD` in an App Extension, `#define SV_APP_EXTENSIONS` to a
 
 ## Credits
 
-`SVProgressHUD` is brought to you by [Sam Vermette](http://samvermette.com), [Tobias Tiemerding](http://tiemerding.com) and [contributors to the project](https://github.com/SVProgressHUD/SVProgressHUD/contributors). If you're using `SVProgressHUD` in your project, attribution would be very appreciated.
+`SVProgressHUD` is brought to you by [Sam Vermette](http://samvermette.com), [Tobias Tiemerding](http://tiemerding.com) and [contributors to the project](https://github.com/SVProgressHUD/SVProgressHUD/contributors). Refactored and adapted for use with the `Swift Package Manager` by [Vitalis Gkirsas](https://github.com/epitonium). If you're using `SVProgressHUD` in your project, attribution would be very appreciated.
