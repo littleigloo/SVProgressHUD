@@ -1,7 +1,7 @@
 # SVProgressHUD
 
 <p align="center">
-<img src="http://f.cl.ly/items/2G1F1Z0M0k0h2U3V1p39/SVProgressHUD.gif" width="150"/>
+<img src="Images/coverImage1.gif" width="199"/>
 </p>
 
 <p align="center">
